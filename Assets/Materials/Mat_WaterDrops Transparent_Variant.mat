@@ -56,7 +56,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaDstBlend: 10
-    - _AlphaSrcBlend: 1
     - _BaseSmoothness: 0.8
     - _DstBlend: 10
     - _MAPPING_METHOD: 0
@@ -66,7 +65,6 @@ Material:
     - _StencilRefGBuffer: 2
     - _StencilRefMV: 32
     - _SurfaceType: 1
-    - _TransparentDepthPrepassEnable: 0
     - _Wetness: 1
     - _ZTestDepthEqualForOpaque: 4
     - _ZWrite: 0

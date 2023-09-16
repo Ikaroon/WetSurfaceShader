@@ -89,9 +89,9 @@ Material:
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
-    - _BaseSmoothness: 0
+    - _BaseSmoothness: 0.1
     - _BlendMode: 0
-    - _Blending: 8
+    - _Blending: 2
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
@@ -103,7 +103,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _FluidSmoothness: 0.8
-    - _Fluid_Normal_Strength: 0.1
+    - _Fluid_Normal_Strength: 0.2
     - _MAPPING_METHOD: 2
     - _OpaqueCullMode: 2
     - _REFRACTSCENE: 0
@@ -145,6 +145,6 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FluidColor: {r: 0.18154147, g: 0.31935972, b: 0.4433962, a: 0.27450982}
+    - _FluidColor: {r: 0.18154144, g: 0.3193597, b: 0.44339618, a: 0.23529412}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
