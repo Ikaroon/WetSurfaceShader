@@ -34,6 +34,7 @@ Material:
   - _MAPPING_METHOD_UV_SIDE
   - _REFRACTSCENE
   - _SURFACE_TYPE_TRANSPARENT
+  - _TOP_TEXTURE_TYPE_DOTS
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -66,6 +67,7 @@ Material:
     - _StencilRefMV: 32
     - _SurfaceType: 1
     - _TransparentDepthPrepassEnable: 0
+    - _Wetness: 1
     - _ZTestDepthEqualForOpaque: 4
     - _ZWrite: 0
     m_Colors:
