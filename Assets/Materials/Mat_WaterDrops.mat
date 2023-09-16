@@ -49,12 +49,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Diffuse:
-        m_Texture: {fileID: 2800000, guid: 2d72676bea3528945be4d195bc9b3e9a, type: 3}
-        m_Scale: {x: 10, y: 10}
+        m_Texture: {fileID: 2800000, guid: 7067767e93e68694ea0814e6a90c5a5e, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _Normal_Map:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 4f607954b4d4c904aa24af3cfdd377d3, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _WaterDrops:
         m_Texture: {fileID: 0}
@@ -104,6 +104,7 @@ Material:
     - _FluidSmoothness: 0.8
     - _MAPPING_METHOD: 2
     - _OpaqueCullMode: 2
+    - _REFRACTSCENE: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
@@ -141,6 +142,6 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FluidColor: {r: 0, g: 0, b: 0, a: 0.019607844}
-    - _Tint: {r: 0, g: 0, b: 0, a: 0}
+    - _FluidColor: {r: 0, g: 0, b: 0, a: 0.19607843}
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
