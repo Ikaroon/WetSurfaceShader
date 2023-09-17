@@ -30,7 +30,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
-  - _MAPPING_METHOD_TRIPLANAR
+  - _MAPPING_METHOD_BIPLANAR
   - _TOP_TEXTURE_TYPE_DOTS
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -104,7 +104,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _FluidSmoothness: 0.8
     - _Fluid_Normal_Strength: 0.2
-    - _MAPPING_METHOD: 2
+    - _MAPPING_METHOD: 4
     - _OpaqueCullMode: 2
     - _REFRACTSCENE: 0
     - _RayTracing: 0

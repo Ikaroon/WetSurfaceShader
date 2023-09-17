@@ -167,7 +167,7 @@ public class ShaderGUI_WaterDrops_Universal : ShaderGUI
 		EditorGUILayout.Space();
 		materialEditor.ShaderProperty(FindProperty("_MAPPING_METHOD", properties), "Mapping Method");
 
-		if (IsActive(targetMat, "_MAPPING_METHOD_TRIPLANAR"))
+		if (IsActive(targetMat, "_MAPPING_METHOD_TRIPLANAR") || IsActive(targetMat, "_MAPPING_METHOD_BIPLANAR"))
 			materialEditor.ShaderProperty(FindProperty("_Blending", properties), "Triplanar Blending");
 
 		EditorGUILayout.EndVertical();

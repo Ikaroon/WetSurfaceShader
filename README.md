@@ -28,6 +28,8 @@ There is one shader implemented in Shader Graph that implements various features
 	Maps the top and side textures using the world position and normal combined with a blending factor.
 4. World XZ Top:
 	Maps the top texture using the world position.
+5. Biplanar:
+	Maps the top and side textures using the world position and normal combined with a blending factor.
 	
 #### Top Texture Type
 1. Drips:
@@ -69,10 +71,7 @@ The most versatile implementation of this effect is the triplanar variant.
 However, as said in the section before, it is the variant with the highest sample count.
 To reduce this sample count it isn't strictly required to fall back to UV mapping. This depends on the further situation of the games effects and shaders.
 
-Some solutions to this problem are:
-1. Biplanar mapping:
-While this approach only removes one of the three samples it potentially improves performance slightly if samples are a problem for the targetted platform. It favours math over samples.
-2. Dithered Mapping:
+For example: Dithered mapping.
 Dithered mapping might sound cheap but it allows to reduce the effective sampling count to one. While it still needs to either sample a texture or read a dither matrix this can be shared among many shaders that use similar effects.
 This mapping is especially useful when using temporal anti-aliasing as it allows for using blue noise textures. Their hardly recognisable repetition combined with the frame blending of TAA hides the dithering adequately.
 
