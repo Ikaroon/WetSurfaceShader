@@ -48,6 +48,9 @@ The custom Shader GUI allows you to change between the shader's opaque and trans
 Next to that you can choose a diffuse and normal map including their tilings.
 You can also tint the surface and add a base smoothness.
 
+### Textures
+All fluid textures use R8_UNorm because they only need one texture channel and low precision.
+
 ## GUI
 The custom shader GUI gets rid of the broad GUI HDRP materials have. While this takes away some control it also allows you to focus on the shader specific properties.
 It also properly groups data for the material.
@@ -59,6 +62,10 @@ However, while triplanar mapping works in most situations it is also the solutio
 If the geometry has UVs that generally follow gravity along the y axis it is possible to choose the desired uv mapping.
 
 ## Optimisation
+
+### Rendering VFX Graphs
+Instead of rendering all VFX graphs individually it would be possible to render them with the same camera into the same texture but different channels.
+This would also reduce the impact of the smearing processing.
 
 ### Sample Count
 The most versatile implementation of this effect is the triplanar variant.
@@ -82,3 +89,12 @@ With more time I would properly spend time in investigating proven baking approa
 ### Automatic UV Baking
 Next to triplanar mapping we can map the texture using the UV data. However, depending on its layout it may lead to water running up- or sidewards. To fix this you either have to manually author the UV channels or to create an automatic UV baking.
 Such an implementation could struggle with curved geometry though and would need proper testing with a broad spectrum of geometry first.
+
+## Software/Services Used
+
+### Affinity Photo
+Used to generated testing textures such as "Tex_TestDrop" and "Tex_TestFlow".
+It was also used to generate the "Drop" texture for the Drips VFX graph.
+
+### Pinterest and Google
+Researching water flow images and videos for inspiration and visual approximation.
