@@ -41,12 +41,17 @@ This effect isn't strong and can be toggled off for opaque surface or when perfo
 
 #### Fluid
 Next to colouring the fluid it is possible to set its smoothness and the overall wetness.
-The normal strength defines how strongly the normal map gets generated from the heightmap.
+The normal strength defines how the normal map gets generated from the heightmap.
 
 #### Surface
 The custom Shader GUI allows you to change between the shader's opaque and transparent variant.
 Next to that you can choose a diffuse and normal map including their tilings.
 You can also tint the surface and add a base smoothness.
+
+## GUI
+The custom shader GUI gets rid of the broad GUI HDRP materials have. While this takes away some control it also allows you to focus on the shader specific properties.
+It also properly groups data for the material.
+The "Surface Type" option is still included to make it possible to have windows and other transparent surface with water flowing down.
 
 ## Usage
 When using the shader it is advisable to choose the mapping that fits the mesh best.
