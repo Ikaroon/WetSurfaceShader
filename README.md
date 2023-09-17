@@ -86,6 +86,9 @@ With more time I would properly spend time in investigating proven baking approa
 Next to triplanar mapping we can map the texture using the UV data. However, depending on its layout it may lead to water running up- or sidewards. To fix this you either have to manually author the UV channels or to create an automatic UV baking.
 Such an implementation could struggle with curved geometry though and would need proper testing with a broad spectrum of geometry first.
 
+### Break Down
+If desired it would be possible to reduce texture and rendering impact by reducing the features the shader provides such as the different texture types.
+
 ## Software/Services Used
 
 ### Affinity Photo
