@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -8,34 +6,19 @@ public class FluidTextureController : MonoBehaviour
 {
 	static int s_fadePropertyID = Shader.PropertyToID("_Fade");
 
-	[Header("Flow")]
 	[SerializeField]
-	string m_flowTextureName = "_Fluid_Flow_Texture";
-	int m_flowTextureID;
+	string m_fluidTextureName = "_Fluid_Texture";
+	int m_fluidTextureID;
 	[SerializeField]
-	RenderTexture m_flowTexture;
+	RenderTexture m_fluidTexture;
+	[SerializeField, Range(0f, 0.1f)]
+	float m_dotsFade = 0.005f;
+	[SerializeField, Range(0f, 0.1f)]
+	float m_dripsFade = 0f;
 	[SerializeField, Range(0f, 0.1f)]
 	float m_flowFade = 0.005f;
 
-	RenderTexture m_flowTargetTexture;
-
-	[Header("Drips")]
-	[SerializeField]
-	string m_dripsTextureName = "_Fluid_Drips_Texture";
-	int m_dripsTextureID;
-	[SerializeField]
-	RenderTexture m_dripsTexture;
-
-	[Header("Dots")]
-	[SerializeField]
-	string m_dotsTextureName = "_Fluid_Dots_Texture";
-	int m_dotsTextureID;
-	[SerializeField]
-	RenderTexture m_dotsTexture;
-	[SerializeField, Range(0f, 0.1f)]
-	float m_dotsFade = 0.005f;
-
-	RenderTexture m_dotsTargetTexture;
+	RenderTexture m_fluidTargetTexture;
 
 	// System
 	Material m_fadeMaterial;
@@ -66,19 +49,11 @@ public class FluidTextureController : MonoBehaviour
 	{
 		var dt = Time.deltaTime;
 
-		// Flow Blits
-		m_fadeMaterial.SetFloat(s_fadePropertyID, m_flowFade * dt);
+		m_fadeMaterial.SetVector(s_fadePropertyID, new Vector3(m_flowFade, m_dotsFade, m_dripsFade) * dt);
 
-		Graphics.Blit(m_flowTargetTexture, m_bufferTexture);
-		Graphics.Blit(m_bufferTexture, m_flowTargetTexture, m_fadeMaterial);
-		Graphics.Blit(m_flowTexture, m_flowTargetTexture, m_transferMaterial);
-
-		// Dots Blits
-		m_fadeMaterial.SetFloat(s_fadePropertyID, m_dotsFade * dt);
-
-		Graphics.Blit(m_dotsTargetTexture, m_bufferTexture);
-		Graphics.Blit(m_bufferTexture, m_dotsTargetTexture, m_fadeMaterial);
-		Graphics.Blit(m_dotsTexture, m_dotsTargetTexture, m_transferMaterial);
+		Graphics.Blit(m_fluidTargetTexture, m_bufferTexture);
+		Graphics.Blit(m_bufferTexture, m_fluidTargetTexture, m_fadeMaterial);
+		Graphics.Blit(m_fluidTexture, m_fluidTargetTexture, m_transferMaterial);
 	}
 
 	void OnValidate()
@@ -92,43 +67,29 @@ public class FluidTextureController : MonoBehaviour
 			m_bufferTexture.Release();
 		m_bufferTexture = null;
 
-		if (m_flowTargetTexture != null)
-			m_flowTargetTexture.Release();
-		m_flowTargetTexture = null;
-
-		if (m_dotsTargetTexture != null)
-			m_dotsTargetTexture.Release();
-		m_dotsTargetTexture = null;
+		if (m_fluidTargetTexture != null)
+			m_fluidTargetTexture.Release();
+		m_fluidTargetTexture = null;
 	}
 
 	void RefreshTextures()
 	{
-		m_flowTextureID = Shader.PropertyToID(m_flowTextureName);
-		m_dripsTextureID = Shader.PropertyToID(m_dripsTextureName);
-		m_dotsTextureID = Shader.PropertyToID(m_dotsTextureName);
+		m_fluidTextureID = Shader.PropertyToID(m_fluidTextureName);
 
 		ClearTextures();
 
-		m_bufferTexture = new RenderTexture(m_flowTexture)
+		m_bufferTexture = new RenderTexture(m_fluidTexture)
 		{
-			name = $"{m_flowTexture.name} Buffer",
+			name = $"{m_fluidTexture.name} Buffer",
 			wrapMode = TextureWrapMode.Repeat,
 		};
 
-		m_flowTargetTexture = new RenderTexture(m_flowTexture)
+		m_fluidTargetTexture = new RenderTexture(m_fluidTexture)
 		{
-			name = $"{m_flowTexture.name} Target",
+			name = $"{m_fluidTexture.name} Target",
 			wrapMode = TextureWrapMode.Repeat,
 		};
 
-		m_dotsTargetTexture = new RenderTexture(m_dotsTexture)
-		{
-			name = $"{m_dotsTexture.name} Target",
-			wrapMode = TextureWrapMode.Repeat,
-		};
-
-		Shader.SetGlobalTexture(m_flowTextureID, m_flowTargetTexture);
-		Shader.SetGlobalTexture(m_dripsTextureID, m_dripsTexture);
-		Shader.SetGlobalTexture(m_dotsTextureID, m_dotsTargetTexture);
+		Shader.SetGlobalTexture(m_fluidTextureID, m_fluidTargetTexture);
 	}
 }

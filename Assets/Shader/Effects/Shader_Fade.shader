@@ -3,7 +3,7 @@ Shader "Hidden/Shader_Fade"
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "black" {}
-		_Fade ("Fade", Float) = 0.01
+		_Fade ("Fade", Vector) = (0.01, 0.01, 0, 0)
 	}
 	SubShader
 	{
@@ -18,7 +18,7 @@ Shader "Hidden/Shader_Fade"
 			#pragma fragment frag
 			
 			sampler2D _MainTex;
-			float _Fade;
+			float3 _Fade;
 
 			struct appdata
 			{
@@ -42,7 +42,7 @@ Shader "Hidden/Shader_Fade"
 
 			float4 frag (v2f i) : SV_Target
 			{
-				return tex2D(_MainTex, i.uv) - _Fade;
+				return float4(tex2D(_MainTex, i.uv).rgb - _Fade, 1);
 			}
 			ENDCG
 		}

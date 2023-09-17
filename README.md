@@ -49,7 +49,8 @@ Next to that you can choose a diffuse and normal map including their tilings.
 You can also tint the surface and add a base smoothness.
 
 ### Textures
-All fluid textures use R8_UNorm because they only need one texture channel and low precision.
+The fluid texture is R8G8B8A8_UNorm because it uses all RGB channels but only needs low precision per channel.
+It also doesn't use stencil or depth information and, therefore, doesn't need them.
 
 ## GUI
 The custom shader GUI gets rid of the broad GUI HDRP materials have. While this takes away some control it also allows you to focus on the shader specific properties.
@@ -63,20 +64,15 @@ If the geometry has UVs that generally follow gravity along the y axis it is pos
 
 ## Optimisation
 
-### Rendering VFX Graphs
-Instead of rendering all VFX graphs individually it would be possible to render them with the same camera into the same texture but different channels.
-This would also reduce the impact of the smearing processing.
-
 ### Sample Count
 The most versatile implementation of this effect is the triplanar variant.
 However, as said in the section before, it is the variant with the highest sample count.
 To reduce this sample count it isn't strictly required to fall back to UV mapping. This depends on the further situation of the games effects and shaders.
 
 Some solutions to this problem are:
-1. Biplanar mapping
+1. Biplanar mapping:
 While this approach only removes one of the three samples it potentially improves performance slightly if samples are a problem for the targetted platform. It favours math over samples.
-However, because it only samples two textures it isn't purely compatible with the top/side texture approach implemented in the shader except when using if conditions in the fragmet stage of the shader which generally not advisable. Proper testing of performance on the target platform should be done here before choosing this approach.
-2. Dithered Mapping
+2. Dithered Mapping:
 Dithered mapping might sound cheap but it allows to reduce the effective sampling count to one. While it still needs to either sample a texture or read a dither matrix this can be shared among many shaders that use similar effects.
 This mapping is especially useful when using temporal anti-aliasing as it allows for using blue noise textures. Their hardly recognisable repetition combined with the frame blending of TAA hides the dithering adequately.
 
