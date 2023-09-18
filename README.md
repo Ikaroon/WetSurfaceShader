@@ -60,6 +60,10 @@ It also properly groups data for the material.
 The "Surface Type" option is still included to make it possible to have windows and other transparent surface with water flowing down.
 
 ## Usage
+In the Unity project you can find the scene "_Scenes/Scene_DemoStage" which contains a working setup of the effect.
+For the effect to work the GameObject "System/FluidTextures" in the scene contains a controller that manages the fluid texture for the effect and contains the VFX graph simulations as child.
+It is possible to make this GameObject a prefab for easier usage in new scenes.
+
 When using the shader it is advisable to choose the mapping that fits the mesh best.
 However, while triplanar mapping works in most situations it is also the solution that requires the most texture samples.
 If the geometry has UVs that generally follow gravity along the y axis it is possible to choose the desired uv mapping.
